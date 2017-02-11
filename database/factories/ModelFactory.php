@@ -22,3 +22,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Chat::class, function (Faker\Generator $faker) {
+
+    return [
+        'sending_user_id' => factory(User::class)->create()->id,
+        'receiving_user_id' => factory(User::class)->create()->id, 
+        'message': $faker->sentence($nbWords = 6, $variableNbWords = true)
+        'received': $faker->randomElement(1, 0);
+    ];
+});
